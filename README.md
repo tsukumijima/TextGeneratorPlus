@@ -8,7 +8,7 @@ ver 0.1 base karaage modify version
 文章の自動生成の方法
 
 ### 事前準備
-まずは、事前準備として、適当な長い文章が入ったテキストデータを用意 ex:'sample txt'
+まずは、事前準備として、適当な長い文章が入ったテキストデータを用意 ex:`sample txt`
 以下コマンド実行
 ~~~~
 $ python PrepareChain.py sample.txt 
