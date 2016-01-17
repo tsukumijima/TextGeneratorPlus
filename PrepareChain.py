@@ -235,6 +235,11 @@ if __name__ == '__main__':
     # unittest.main()
 
     param = sys.argv
+    if (len(param) != 2):
+        print ("Usage: $ python " + param[0] + " sample.txt")
+        quit()  
+
+
     f = open(param[1])
     text = f.read()
     f.close()
