@@ -7,21 +7,25 @@ u"""
 import os.path
 import sqlite3
 import random
+import sys
 
 from PrepareChain import PrepareChain
 
+numb_sentence = 5
 
 class GenerateText(object):
     u"""
     文章生成用クラス
     """
 
-    def __init__(self, n=5):
+    # def __init__(self, n=10):
+    def __init__(self):
+        # print ("sentence_numb=" + str(numb_sentence))
         u"""
         初期化メソッド
         @param n いくつの文章を生成するか
         """
-        self.n = n
+        self.n = numb_sentence
 
     def generate(self):
         u"""
@@ -156,6 +160,13 @@ class GenerateText(object):
 
 
 if __name__ == '__main__':
+    param = sys.argv
+    if (len(param) != 2):
+        print ("Usage: $ python " + param[0] + " number")
+        quit()  
+
+    numb_sentence = int(param[1])
+
     generator = GenerateText()
     print generator.generate()
 
