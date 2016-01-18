@@ -61,7 +61,7 @@ $ chmod 755 post-hatena-script.sh
 $ ./post-hatena-script 10
 ~~~~
 
-
+はてなブログは24時間に100回までしか投稿できないので注意すること
 
 
 ## 各ファイル
