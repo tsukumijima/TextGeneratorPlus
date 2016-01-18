@@ -168,7 +168,5 @@ if __name__ == '__main__':
     numb_sentence = int(param[1])
 
     generator = GenerateText()
-    print generator.generate()
-
-
-
+    gen_txt = generator.generate()
+    print (gen_txt.encode('utf_8')) 
