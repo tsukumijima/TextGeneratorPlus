@@ -29,6 +29,40 @@ $ python PrepareChain.py sample.txt
 $ python GenerateText.py 10
 ~~~~
 
+ファイルに出力も可能
+
+~~~~
+$ python GenerateText.py 10 > output.txt
+~~~~
+
+### はてなブログに投稿
+`post-hatena.py`の以下の箇所を自身のはてなブログに合わせて修正
+
+~~~~
+username = 'username'
+password = 'API key'
+blogname = 'yourblogname.hatenablog.com'
+~~~~
+
+以下ではてなブログに投稿できる。`title.txt` `body.txt`にはそれぞれ記事のタイトルと本文を書いたテキストファイルを入れる
+
+~~~~
+$ post-hatena.py title.txt body.txt
+~~~~
+
+### はてなブログに自動で連続投稿
+以下で実行権限を付与
+~~~~
+$ chmod 755 post-hatena-script.sh
+~~~~
+
+例えば10回連続で投稿するには以下
+~~~~
+$ ./post-hatena-script 10
+~~~~
+
+
+
 
 ## 各ファイル
 ### README.md
