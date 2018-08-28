@@ -3,7 +3,9 @@
 
 ## バージョン
 ver 0.1 base karaage modify version, modified for python 3 by nkutomi
-Python3.* で動くはずです
+
+## 環境
+Python3.* で動くはずです。mecabは入れて、Pythonから呼べるようにしておいてください
 
 ## 使い方
 文章の自動生成の方法
