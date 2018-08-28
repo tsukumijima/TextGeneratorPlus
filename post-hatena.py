@@ -24,20 +24,20 @@ def posthatena(data):
     url = 'http://blog.hatena.ne.jp/{}/{}/atom/entry'.format(username, blogname)
 
     r = requests.post(url, data=data, headers=headers)
-    print (r)
+    print(r)
 
 if __name__ == '__main__':
 
     param = sys.argv
     if (len(param) != 3):
-        print ("Usage: $ python " + param[0] + " title.txt body.txt")
+        print("Usage: $ python " + param[0] + " title.txt body.txt")
         quit()  
 
-    f = open(param[1])
+    f = open(param[1], encoding="utf-8_sig")
     title = f.read()
     f.close()
 
-    f = open(param[2])
+    f = open(param[2], encoding="utf-8_sig")
     body = f.read()
     f.close()
 

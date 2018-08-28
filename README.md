@@ -2,7 +2,8 @@
 マルコフ連鎖を使った文章自動生成プログラム
 
 ## バージョン
-ver 0.1 base karaage modify version
+ver 0.1 base karaage modify version, modified for python 3 by nkutomi
+Python3.* で動くはずです
 
 ## 使い方
 文章の自動生成の方法
@@ -10,7 +11,7 @@ ver 0.1 base karaage modify version
 ### インストール(git clone)
 
 ~~~~
-$ git clone https://github.com/karaage0703/TextGenerator.git
+$ git clone https://github.com/nkutomi/TextGenerator.git
 $ cd TextGenerator
 ~~~~
 
@@ -35,7 +36,7 @@ $ python GenerateText.py 10
 $ python GenerateText.py 10 > output.txt
 ~~~~
 
-### はてなブログに投稿
+### はてなブログに投稿（未確認）
 `post-hatena.py`の以下の箇所を自身のはてなブログに合わせて修正
 
 ~~~~
@@ -50,7 +51,7 @@ blogname = 'yourblogname.hatenablog.com'
 $ post-hatena.py title.txt body.txt
 ~~~~
 
-### はてなブログに自動で連続投稿
+### はてなブログに自動で連続投稿（未確認）
 以下で実行権限を付与
 ~~~~
 $ chmod 755 post-hatena-script.sh
