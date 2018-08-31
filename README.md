@@ -5,7 +5,7 @@
 ver 0.1 base karaage modify version, modified for python 3 by nkutomi
 
 ## 環境
-Python3.* で動くはずです。mecabは入れて、Pythonから呼べるようにしておいてください
+Python3.* で動いていたのですが、また動かすことができず...。mecabは入れて、Pythonから呼べるようにしておけば大丈夫だったのだが...
 
 ## 使い方
 文章の自動生成の方法
@@ -24,7 +24,7 @@ $ cd TextGenerator
 $ python PrepareChain.py samples/sample.txt 
 ~~~~
 
-なお、sample以外にも、夏目漱石の小説を5つ入れてあり、5つを1つのファイルにまとめたsouseki_all5.txtもあります。これは青空文庫（https://www.aozora.gr.jp/index_pages/person148.html#sakuhin_list_1）から加工（旧字やルビなどの削除）しました。
+なお、sample以外にも、夏目漱石の小説を5つ入れてあり、5つを1つのファイルにまとめたsouseki_all5.txtもあります。これは青空文庫（https://www.aozora.gr.jp/index_pages/person148.html#sakuhin_list_1 ）から加工（旧字やルビなどの削除）しました。
 
 ### 文章の生成
 事前準備を実施した後、以下コマンド実行。
