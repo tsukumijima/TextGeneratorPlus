@@ -1,3 +1,4 @@
 syntax:glob
 chain.db
 __pycache__
+soseki/*
