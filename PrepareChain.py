@@ -143,12 +143,12 @@ class PrepareChain(object):
                 schema = f.read()
                 con.executescript(schema)
 
-            # データ整形
-            datas = [(triplet[0], triplet[1], triplet[2], freq) for (triplet, freq) in list(triplet_freqs.items())]
+        # データ整形
+        datas = [(triplet[0], triplet[1], triplet[2], freq) for (triplet, freq) in list(triplet_freqs.items())]
 
-            # データ挿入
-            p_statement = "insert into chain_freqs (prefix1, prefix2, suffix, freq) values (?, ?, ?, ?)"
-            con.executemany(p_statement, datas)
+        # データ挿入
+        p_statement = "insert into chain_freqs (prefix1, prefix2, suffix, freq) values (?, ?, ?, ?)"
+        con.executemany(p_statement, datas)
 
         # コミットしてクローズ
         con.commit()
