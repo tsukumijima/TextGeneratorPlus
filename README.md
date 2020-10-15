@@ -1,16 +1,27 @@
 
 # TextGeneratorPlus
 
-マルコフ連鎖を使った文章自動生成プログラムです。Python3 に対応しています。
+マルコフ連鎖を使った文章自動生成プログラムです。  
+Python3 に対応しているほか、以下の変更を行っています。
 
-## バージョン
+- 動くか微妙で需要もなさそうなはてなブログ投稿スクリプトを削除
 
-ver 0.1 base karaage modify version, modified for python 3 by nkutomi
+## ファイル構成
 
-## 環境
+### README.md
+このファイル
 
-Windows10 64bit の Python 3.7.7 で動作を確認しています。  
-それ以外の環境でも Python3 が入っていて、MeCab を動かすことができれば動作するはずです。
+### PrepareChain.py
+適当なテキストを与えて、そこから 3 つ組のチェーンを作成し、DB に保存するファイル
+
+### GenerateText.py
+実際にランダムで文章を生成するファイル
+
+### schema.sql
+DB 作成のためのスキーマファイル
+
+### chain.db
+Git で管理はされていないが、3 つ組チェーンの情報が保存されているDBファイル
 
 ## インストール
 
@@ -57,52 +68,11 @@ $ python GenerateText.py 10
 $ python GenerateText.py 10 > output.txt
 ~~~~
 
-### はてなブログに投稿（未確認）
+## 環境
 
-`post-hatena.py` の以下の箇所を自身のはてなブログに合わせて修正します。
+Windows10 64bit の Python 3.7.7 で動作を確認しています。  
+それ以外の環境でも Python3 が入っていて、MeCab を動かすことができれば動作するはずです。
 
-~~~~
-username = 'username'
-password = 'API key'
-blogname = 'yourblogname.hatenablog.com'
-~~~~
+## バージョン
 
-以下のコマンドで、はてなブログに投稿できます。`title.txt` `body.txt` にはそれぞれ記事のタイトルと本文を書いたテキストファイルを入れてください。
-
-~~~~
-$ post-hatena.py title.txt body.txt
-~~~~
-
-### はてなブログに自動で連続投稿（未確認）
-
-macOS・Linux 環境の場合は、あらかじめ実行権限を付与しておきます。
-
-~~~~
-$ chmod 755 post-hatena-script.sh
-~~~~
-
-例えば 10 回連続で投稿するには以下のように実行します。
-
-~~~~
-$ ./post-hatena-script 10
-~~~~
-
-はてなブログは 24 時間に 100 回までしか投稿できないので注意してください。
-
-
-## 各ファイル
-
-### README.md
-このファイル
-
-### PrepareChain.py
-適当なテキストを与えて、そこから 3 つ組のチェーンを作成し、DB に保存するファイル
-
-### schema.sql
-DB 作成のためのスキーマファイル
-
-### GenerateText.py
-実際にランダムで文章を生成するファイル
-
-### chain.db
-Git で管理はされていないが、3 つ組チェーンの情報が保存されているDBファイル
+ver 0.1 base karaage modify version, modified for python 3 by nkutomi
