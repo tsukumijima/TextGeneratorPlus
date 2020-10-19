@@ -53,7 +53,7 @@ class TwitterAPI:
             access_token, access_token_secret, consumer_key, consumer_secret
         ))
 
-    def get_user_timeline(self, screen_name, since_id = None, include_rts = False, include_replies = True):
+    def get_user_timeline(self, screen_name, since_id = None, include_rts = False, include_replies = True, print_console = True):
         """
         search/universal を使いアカウントのタイムラインを再帰的に取得する
         @param screen_name アカウントのスクリーンネーム
@@ -61,6 +61,7 @@ class TwitterAPI:
         @param since_id 指定する ID よりも大きい ID のツイートのみを取得する
         @param include_rts 取得結果にリツイートを含む
         @param include_replies 取得結果にリプライを含む
+        @param print 進捗をコンソールに表示する
         @return 取得結果
         """
 
@@ -81,7 +82,7 @@ class TwitterAPI:
             query += f'since_id:{since_id} '
 
         # 初回取得
-        if __name__ == '__main__':
+        if print_console is True:
             print('Getting tweets ...')
 
         user_timeline = self.twitter.search.universal(
@@ -100,7 +101,7 @@ class TwitterAPI:
             # 0.25秒待機
             time.sleep(0.25)
 
-            if __name__ == '__main__':
+            if print_console is True:
                 print('Getting tweets ... ' + str(len(user_timeline)).rjust(3, ' ') + ' tweets (max_id:' + max_id + ')')
 
             # 指定されたアカウントのタイムラインを取得
