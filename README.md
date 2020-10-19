@@ -22,8 +22,8 @@ Windows 64bit で実行している場合は、別途 [こちら](https://github
 
 ~~~~
 $ pip install mecab
-$ git clone https://github.com/nkutomi/TextGenerator.git
-$ cd TextGenerator
+$ git clone https://github.com/tsukumijima/TweetGenerator.git
+$ cd TweetGenerator
 ~~~~
 
 ## 使い方
