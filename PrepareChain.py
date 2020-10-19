@@ -13,6 +13,7 @@ from collections import defaultdict
 
 import sys
 
+
 class PrepareChain(object):
     """
     チェーンを作成してDBに保存するクラス
@@ -75,7 +76,6 @@ class PrepareChain(object):
         # 全ての分割文字を改行文字に置換（splitしたときに「。」などの情報を無くさないため）
         text = re.sub(r"({0})".format(delimiter), r"\1\n", text)
 
-
         # 改行文字で分割
         sentences = text.splitlines()
 
@@ -91,11 +91,11 @@ class PrepareChain(object):
         @return 形態素で分割された配列
         """
         morphemes = []
-#        sentence = sentence.encode("utf-8")
+        # sentence = sentence.encode("utf-8")
         node = self.tagger.parseToNode(sentence)
         while node:
             if node.posid != 0:
-                morpheme = node.surface#.decode("utf-8")
+                morpheme = node.surface
                 morphemes.append(morpheme)
             node = node.next
         return morphemes
@@ -242,8 +242,7 @@ if __name__ == '__main__':
     param = sys.argv
     if (len(param) != 2):
         print(("Usage: $ python " + param[0] + " sample.txt"))
-        quit()  
-
+        exit()
 
     f = open(param[1], encoding="utf-8_sig")
     text = f.read()

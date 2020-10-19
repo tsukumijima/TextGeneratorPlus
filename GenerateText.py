@@ -13,6 +13,7 @@ from PrepareChain import PrepareChain
 
 numb_sentence = 5
 
+
 class GenerateText(object):
     """
     文章生成用クラス
@@ -163,10 +164,10 @@ if __name__ == '__main__':
     param = sys.argv
     if (len(param) != 2):
         print(("Usage: $ python " + param[0] + " number"))
-        quit()  
+        exit()
 
     numb_sentence = int(param[1])
 
     generator = GenerateText()
     gen_txt = generator.generate()
-    print((gen_txt))#.encode('utf_8'))) 
+    print(gen_txt)

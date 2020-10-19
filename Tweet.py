@@ -9,6 +9,7 @@ import random
 from GenerateText import GenerateText
 from TwitterAPI import TwitterAPI
 
+
 if __name__ == '__main__':
 
     # 初期化
@@ -27,10 +28,9 @@ if __name__ == '__main__':
         if len(text) <= 140:
             break
 
-
     # ツイートを送信
     print('Tweet: ' + text)
-    
+
     result = tweet.tweet(text)
     print('Tweet ID: ' + result['id_str'])
 

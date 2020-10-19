@@ -7,6 +7,7 @@
 import os
 import re
 
+
 class Utils:
 
     @staticmethod

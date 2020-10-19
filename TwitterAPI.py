@@ -5,7 +5,6 @@ Twitter API を操作するクラス
 """
 
 import os
-import sys
 import time
 
 import dotenv
@@ -17,6 +16,7 @@ if os.name == 'nt':
     import _locale
     _locale._getdefaultlocale_backup = _locale._getdefaultlocale
     _locale._getdefaultlocale = (lambda *args: (_locale._getdefaultlocale_backup()[0], 'UTF-8'))
+
 
 class TwitterAPI:
 
@@ -32,10 +32,8 @@ class TwitterAPI:
         consumer_secret = os.environ.get('TWITTER_CONSUMER_SECRET')
 
         # 各種キーのいずれかが取得できなかったらエラー
-        if (access_token == None or
-            access_token_secret == None or
-            consumer_key == None or
-            consumer_secret == None):
+        if (access_token is None or access_token_secret is None or
+            consumer_key is None or consumer_secret is None):
             raise Exception('The Twitter API consumer key or access token has not been set.')
 
         # 参考: https://github.com/TwidereProject/Twidere-Android/blob/master/twidere/src/main/kotlin/org/mariotaku/twidere/util/api/TwitterAndroidExtraHeaders.kt
@@ -55,7 +53,6 @@ class TwitterAPI:
             access_token, access_token_secret, consumer_key, consumer_secret
         ))
 
-
     def get_user_timeline(self, screen_name, since_id = None, include_rts = False, include_replies = True):
         """
         search/universal を使いアカウントのタイムラインを再帰的に取得する
@@ -72,17 +69,16 @@ class TwitterAPI:
 
         # 検索クエリを作成
         query = f'from:@{screen_name} '
-        if include_rts == True:
+        if include_rts is True:
             query += 'include:nativeretweets '
         else:
             query += 'exclude:nativeretweets '
-        if include_replies == True:
+        if include_replies is True:
             query += 'include:replies '
         else:
             query += 'exclude:replies '
-        if since_id != None:
+        if since_id is not None:
             query += f'since_id:{since_id} '
-
 
         # 初回取得
         if __name__ == '__main__':
@@ -95,7 +91,7 @@ class TwitterAPI:
             tweet_mode = 'extended',
             modules = 'status',
         )['modules']
-        
+
         # max_id を設定
         max_id = user_timeline[-1]['status']['data']['id_str']
 
@@ -129,7 +125,6 @@ class TwitterAPI:
 
         return user_timeline
 
-
     def get_user_tweets_count(self, screen_name):
         """
         アカウントのツイート数を取得する
@@ -145,7 +140,6 @@ class TwitterAPI:
         )
 
         return int(result[0]['statuses_count'])
-
 
     def tweet(self, message):
         """

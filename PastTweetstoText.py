@@ -11,6 +11,7 @@ import sys
 from TwitterAPI import TwitterAPI
 from Utils import Utils
 
+
 if __name__ == '__main__':
 
     # 引数チェック
@@ -59,4 +60,3 @@ if __name__ == '__main__':
     # ファイルを書き込む
     Utils.file_put_contents(file_name, file_contents.rstrip('\n'))  # 最後の改行を除去
     print('Saved tweets: ' + file_name)
-

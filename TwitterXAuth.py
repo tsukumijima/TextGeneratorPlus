@@ -5,7 +5,6 @@
 """
 
 import os
-import sys
 
 import dotenv
 import oauth2
@@ -31,10 +30,8 @@ class TwitterXAuth:
         self.consumer_secret = os.environ.get('TWITTER_CONSUMER_SECRET')
 
         # 各種キーのいずれかが取得できなかったらエラー
-        if (self.consumer_key == None or
-            self.consumer_secret == None):
+        if (self.consumer_key is None or self.consumer_secret is None):
             raise Exception('The Twitter API consumer key or access token has not been set.')
-
 
     def xauth(self, screen_name, password, api_url = 'https://api.twitter.com/oauth/access_token'):
         """
@@ -55,7 +52,7 @@ class TwitterXAuth:
                 'x_auth_username': screen_name,
                 'x_auth_password': password,
             }))
-        
+
         parsed_token = dict(urllib.parse.parse_qsl(token))
         if parsed_token == {}:
             raise Exception(token.decode('UTF-8'))
@@ -80,4 +77,3 @@ if __name__ == '__main__':
     # アクセストークンとアクセストークンシークレットを表示
     print('Access token       : ' + access_token)
     print('Access token secret: ' + access_token_secret)
-
