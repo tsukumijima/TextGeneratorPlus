@@ -10,17 +10,17 @@ import time
 import dotenv
 import twitter
 
-# Windows 環境向けの hack
-# 参考: https://stackoverflow.com/questions/31469707/changing-the-locale-preferred-encoding-in-python-3-in-windows
-if os.name == 'nt':
-    import _locale
-    _locale._getdefaultlocale_backup = _locale._getdefaultlocale
-    _locale._getdefaultlocale = (lambda *args: (_locale._getdefaultlocale_backup()[0], 'UTF-8'))
-
 
 class TwitterAPI:
 
     def __init__(self):
+
+        # Windows 環境向けの hack
+        # 参考: https://stackoverflow.com/questions/31469707/changing-the-locale-preferred-encoding-in-python-3-in-windows
+        if os.name == 'nt':
+            import _locale
+            _locale._getdefaultlocale_backup = _locale._getdefaultlocale
+            _locale._getdefaultlocale = (lambda *args: (_locale._getdefaultlocale_backup()[0], 'UTF-8'))
 
         # .env を読み込み
         dotenv.load_dotenv(os.path.dirname(os.path.abspath(__file__)) + '/.env')
@@ -36,16 +36,8 @@ class TwitterAPI:
             consumer_key is None or consumer_secret is None):
             raise Exception('The Twitter API consumer key or access token has not been set.')
 
-        # 参考: https://github.com/TwidereProject/Twidere-Android/blob/master/twidere/src/main/kotlin/org/mariotaku/twidere/util/api/TwitterAndroidExtraHeaders.kt
-        # User-Agent で TwitterAndroid を指定するのが重要、ほかは指定しなくてもツイートできるけど念のため
-        headers = {
-            'Accept-Language': 'ja',
-            'User-Agent': 'TwitterAndroid/6.41.0 (7160062-r-930) Pixel 3a/10 (Google;Pixel 3a;google;sargo;0;;0)',
-            'X-Twitter-Client': 'TwitterAndroid',
-            'X-Twitter-Client-Language': 'ja',
-            'X-Twitter-Client-Version': '6.41.0',
-            'X-Twitter-API-Version': '5',
-        }
+        # ヘッダーを設定
+        headers = self.generate_header(consumer_key)
         twitter.OAuth.generate_headers = (lambda *args: headers)
 
         # Twitter に接続
@@ -155,3 +147,33 @@ class TwitterAPI:
         )
 
         return result
+
+    @staticmethod
+    def generate_header(consumer_key):
+        """
+        Twitter API にアクセスする際のヘッダーを生成する
+        User-Agent で TwitterAndroid/(バージョン) を指定するのが重要、ほかは指定しなくてもツイートできるけど念のため
+        参考: https://github.com/TwidereProject/Twidere-Android/blob/master/twidere/src/main/kotlin/org/mariotaku/twidere/util/api/TwitterAndroidExtraHeaders.kt
+        参考: https://github.com/TwidereProject/Twidere-Android/blob/master/twidere/src/main/java/org/mariotaku/twidere/util/MicroBlogAPIFactory.java
+
+        @param consumer_key コンシューマーキー
+        @return ヘッダー
+        """
+
+        # ヘッダー
+        headers = {
+            'Accept-Language': 'ja',
+            'User-Agent': 'TwitterAndroid/6.41.0 (7160062-r-930) Pixel 3a/10 (Google;Pixel 3a;google;sargo;0;;0)',
+            'X-Twitter-Client': 'TwitterAndroid',
+            'X-Twitter-Client-Language': 'ja',
+            'X-Twitter-Client-Version': '6.41.0',
+            'X-Twitter-API-Version': '5',
+        }
+
+        # iPhone・iPad
+        if (consumer_key == 'IQKbtAYlXLripLGPWd0HUA' or consumer_key == 'CjulERsDeqhhjSme66ECg'):
+            headers['User-Agent'] = 'Twitter/6.75.2 CFNetwork/811.4.18 Darwin/16.5.0'
+            headers['X-Twitter-Client'] = 'Twitter'
+            headers['X-Twitter-Version'] = '6.75.2'
+
+        return headers

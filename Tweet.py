@@ -32,6 +32,4 @@ if __name__ == '__main__':
     print('Tweet: ' + text)
 
     result = tweet.tweet(text)
-    print('Tweet ID: ' + result['id_str'])
-
-    print(result)
+    print(f'Tweet URL: https://twitter.com/{result["user"]["screen_name"]}/status/{result["id_str"]}')

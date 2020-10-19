@@ -21,7 +21,7 @@ Windows 10 64bit の Python 3.7.7 で動作を確認しています。
 Windows 64bit で実行している場合は、別途 [こちら](https://github.com/ikegami-yukino/mecab/releases) から 64bit 版 MeCab のインストールが必要です。
 
 ~~~~
-$ pip install mecab
+$ pip install mecab oauth2 python-dotenv twitter
 $ git clone https://github.com/tsukumijima/TweetGenerator.git
 $ cd TweetGenerator
 ~~~~
@@ -47,6 +47,11 @@ search/universal は TweetDeck などで利用されている非公開 API で�
 非公開の Twitter API にアクセスするため、前述の通り CK/CS は公式のものを利用します。  
 それぞれ Android 用、iPhone 用どちらか一つをコメントアウトして設定してください（ CK は Android・CS は iPhone のような組み合わせは不可）。  
 他の公式 CK/CS を設定することもできますが、通常の手段で入手したコンシューマーキーを設定すると動作しません。
+
+「Login denied due to suspicious activity. Please check your email for further login instructions.」というエラーが表示される場合は、  
+しばらく xAuth ができない状態になってしまっています。他のアカウントを使うか、解除されるまで待ちましょう。  
+一度不審と判断されてしまうと、少なくとも数時間は xAuth ができない状態になるようです。できれば、普段使っている方のクライアントの公式 CK/CS を選択した方がよいでしょう。  
+Twitter for Android の方が成功率が高そうなので、そちらをデフォルトにしています。このあたりはすごく微妙ですが、一度トークンが取得できればずっと利用できるようです。
 
 #### アクセストークン・アクセストークンシークレット
 
