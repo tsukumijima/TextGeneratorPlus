@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-ユーザーのアクセストークンとアクセストークンシークレットを xAuth で取得するファイル
+アカウントのアクセストークンとアクセストークンシークレットを xAuth で取得するファイル
 """
 
 import os
@@ -19,7 +19,7 @@ if os.name == 'nt':
     _locale._getdefaultlocale = (lambda *args: (_locale._getdefaultlocale_backup()[0], 'UTF-8'))
 
 
-class GetXAuthTokens:
+class TwitterXAuth:
 
     def __init__(self):
 
@@ -66,7 +66,7 @@ class GetXAuthTokens:
 if __name__ == '__main__':
 
     # 初期化
-    instance = GetXAuthTokens()
+    instance = TwitterXAuth()
 
     # スクリーンネームを取得
     screen_name = input('Screen name: ')

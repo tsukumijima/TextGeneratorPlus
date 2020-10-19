@@ -25,7 +25,7 @@ class GenerateText(object):
         初期化メソッド
         @param n いくつの文章を生成するか
         """
-        self.n = numb_sentence
+        self.number = numb_sentence
 
     def generate(self):
         """
@@ -44,7 +44,7 @@ class GenerateText(object):
         generated_text = ""
 
         # 指定の数だけ作成する
-        for i in range(self.n):
+        for i in range(self.number):
             text = self._generate_sentence(con)
             generated_text += text
 
