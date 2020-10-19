@@ -64,7 +64,7 @@ class TwitterXAuth:
         if parsed_token == {}:  # parse_token が空 → 認証に失敗したので例外を投げる
             raise Exception(token.decode('UTF-8'))
 
-        return (parsed_token[b'oauth_token'].decode('UTF-8'), parsed_token[b'oauth_token_secret'].decode('UTF-8'))
+        return (parsed_token['oauth_token'], parsed_token['oauth_token_secret'])
 
 
 if __name__ == '__main__':
