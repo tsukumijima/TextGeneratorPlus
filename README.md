@@ -18,7 +18,8 @@ Windows 10 64bit の Python 3.7.7 で動作を確認しています。
 ## インストール
 
 以下のコマンドを実行してください。  
-Windows 64bit で実行している場合は、別途 [こちら](https://github.com/ikegami-yukino/mecab/releases) から 64bit 版 MeCab のインストールが必要です。
+Windows 64bit の場合は、別途 [こちら](https://github.com/ikegami-yukino/mecab/releases) から 64bit 版 MeCab のインストールが必要です。  
+Ubuntu の場合は、`sudo apt install mecab libmecab-dev mecab-ipadic-utf8` と実行すると MeCab をインストールできます。
 
 ~~~~
 $ pip install mecab oauth2 python-dotenv twitter
@@ -129,8 +130,9 @@ $ python Tweet.py
 ~~~~
 
 GenerateText.py で文章が生成できていることを確認したら、生成した文章をつかってツイートしてみましょう。  
-140 文字以内の文章がランダムで生成され、以前 xAuth で認証したアカウントにてツイートされます。　　
-あとは Cron でこのコマンドを定期的に実行されるようにしておけば、Twitter でおなじみの Bot の完成です。
+140 文字以内の文章がランダムで生成され、以前 xAuth で認証したアカウントにてツイートされます。
+
+あとは Cron でこのコマンドを定期的に実行されるようにしておけば、Twitter でおなじみのマルコフ連鎖で文章を生成する Bot の完成です。
 
 ## ファイル構成
 
