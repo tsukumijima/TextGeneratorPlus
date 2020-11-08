@@ -19,7 +19,7 @@ if __name__ == '__main__':
     while True:
 
         # 生成する文章の数
-        generator.number = random.randint(2, 6)  # 2文～6文
+        generator.number = random.randint(2, 5)  # 2文～5文
 
         # 文章を紡ぐ
         text = generator.generate()
